@@ -1,0 +1,23 @@
+{
+  "name": "svg_sample",
+  "version": "1.0.0",
+  "description": "SVG samples",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "svg",
+    "snap",
+    "stampit",
+    "animation"
+  ],
+  "author": "Jose Collas",
+  "license": "ISC",
+  "devDependencies": {
+    "pubsub": "^1.0.2",
+    "requirejs": "^2.1.15",
+    "snapsvg": "^0.3.0",
+    "stampit": "^1.1.0"
+  }
+}
