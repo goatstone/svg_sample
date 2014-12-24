@@ -5,14 +5,13 @@
     <title>SVG Sample</title>
     <style>
         div:nth-child(1) {
-            /*display: none;*/
             position: relative;
             background-color: blueviolet;
             opacity: 0.2;
             width: 100%;
             transition: opacity 2s, background-color 2s, width 2s;
-            /*-webkit-transition: opacity 4s, background-color 2s;*/
         }
+
         div:nth-child(1):hover {
             background-color: greenyellow;
         }
@@ -27,90 +26,10 @@
     </style>
 </head>
 <body>
+
 <div>hello</div>
 <div>good bye</div>
-<script src="/node_modules/stampit/dist/stampit.js"></script>
-<script>
 
-    // goatstone.ui.Component
-    var Component = stampit({
-                sub: function (a) {
-                    return 'sub...';
-                },
-                show: function (b) {
-                    //this.getRootElement().style.display = 'block' ;
-                    this.getRootElement().style.opacity = 1;
-                    return this.id
-                },
-                hide: function () {
-                    console.log('hide');
-                    return 'hide';
-                },
-                setBG: function (color) {
-                    this.getRootElement().style.backgroundColor = color;
-                }
-            },
-            {
-                id: ' [ parentObj ] ',
-                pos: [20, 20]
-            }, function (conf) {
-                var rootElement = conf && conf.rootElement ? conf.rootElement : null;
-                var privileged = 'privileged';
-                this.getP = function () { // privileged method
-                    return privileged;
-                }
-                this.getRootElement = function () {
-                    return rootElement;
-                }
-                // setup element
-
-            }
-    );
-
-    // goatstone.ui.animation.Flame
-    var Flame = stampit({
-                toString: function () {
-                    return 'Flame';
-                },
-                draw: function () {
-                    console.log('flame')
-                    this.getRootElement().style.width = '100px';
-                },
-                fm: function () {
-                    console.log('fm');
-                }
-            },
-            {id: '[ Flame ]'},
-            function (conf) {
-                console.log('Flame : this.id : ', this.id);
-                this.id = conf && conf.id ? conf.id : this.id;
-                this.getSpeed = function () {
-                    return 'id';
-                };
-                this.setSpeed = function () {
-
-                };
-                //  set up the element
-                this.show();
-                this.setBG('peru');
-                this.draw();
-
-            })
-    //.create(null, 'xxxxx');
-
-    var FlameFactory = stampit().compose(Component, Flame);
-
-    var flame0 = FlameFactory.create(
-            {id: 'bigFlame'},
-            {rootElement: document.querySelector('div')}
-    );
-    var flame1 = FlameFactory.create(
-            {id: 'smallFlame'},
-            {rootElement: document.querySelector('div:nth-child(2)')}
-    );
-    flame1.setBG('red');
-
-</script>
 <script data-main="/js/requirejs_entrypoint" src="node_modules/requirejs/require.js"></script>
 </body>
 </html>
