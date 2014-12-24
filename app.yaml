@@ -16,6 +16,10 @@ handlers:
   static_dir: js
   mime_type: application/javascript
 
+- url: /src
+  static_dir: src
+  mime_type: application/javascript
+
 - url: /login
   static_files: login.html
   upload: login.html
