@@ -30,8 +30,7 @@ define(['stampit', 'Component'],
                 this.setBG('peru');
                 this.draw();
 
-            })
-
+            });
         var FlameFactory = stampit().compose(Component, Flame);
 
         return FlameFactory;

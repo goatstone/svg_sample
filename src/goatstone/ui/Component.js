@@ -11,7 +11,7 @@ define(['stampit'],
                 show: function (b) {
                     //this.getRootElement().style.display = 'block' ;
                     this.getRootElement().style.opacity = 1;
-                    return this.id
+                    return this.id;
                 },
                 hide: function () {
                     console.log('hide');
@@ -29,10 +29,10 @@ define(['stampit'],
                 var privileged = 'privileged';
                 this.getP = function () { // privileged method
                     return privileged;
-                }
+                };
                 this.getRootElement = function () {
                     return rootElement;
-                }
+                };
                 // setup element
 
             }
