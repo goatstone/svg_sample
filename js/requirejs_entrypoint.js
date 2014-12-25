@@ -9,8 +9,7 @@ require([], function () {
         paths: {
             stampit: "/node_modules/stampit/dist/stampit",
             //PubSub:             'vendor/pubsub',
-            //
-            //Model:              'goatstone/svg_sample/model/Model',
+            Snap: '/node_modules/snapsvg/dist/snap.svg',
             Controller: 'goatstone/svg_sample/Controller',
             FlameFactory: 'goatstone/ui/animation/FlameFactory',
 

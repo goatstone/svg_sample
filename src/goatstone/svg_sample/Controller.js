@@ -3,20 +3,46 @@
 
  * */
 
-define(["Component", 'FlameFactory'],
-    function (Component, FlameFactory) {
+define(['FlameFactory', 'Snap'],
+    function (FlameFactory, Snap) {
 
         function Controller() {
 
-            var flame0 = FlameFactory.create(
-                {id: 'bigFlame'},
-                {rootElement: document.querySelector('div')}
+            var paper = new Snap(400, 400);
+
+            FlameFactory.create(
+                {
+                    id: 'bigFlame',
+                    color: 'gray',
+                    color1: 'orange',
+                    color2: 'blue',
+                    speed: 700
+                }, // state
+                {paper: paper} //  arg to Flame
             );
-            var flame1 = FlameFactory.create(
-                {id: 'smallFlame'},
-                {rootElement: document.querySelector('div:nth-child(2)')}
+
+            FlameFactory.create(
+                {
+                    id: 'redFlame',
+                    color: 'gray',
+                    color1: 'red',
+                    color2: 'green',
+                    speed: 4000
+                }, // state
+                {paper: paper} //  arg to Flame
             );
-            flame1.setBG('red');
+
+            FlameFactory.create(
+                {
+                    id: 'violetFlame',
+                    color: 'blue',
+                    color1: 'violet',
+                    color2: 'red',
+                    speed: 2000
+                }, // state
+                {paper: paper} //  arg to Flame
+            );
+
         }
 
         return Controller;

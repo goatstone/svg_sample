@@ -9,12 +9,16 @@ define(['stampit'],
                     return 'sub...';
                 },
                 show: function (b) {
-                    //this.getRootElement().style.display = 'block' ;
                     this.getRootElement().style.opacity = 1;
                     return this.id;
                 },
                 hide: function () {
                     console.log('hide');
+                    //this.getRootElement().style.opacity = 0.0;
+                    this.getRootElement()
+                        .attr({
+                            display:'none'
+                        });
                     return 'hide';
                 },
                 setBG: function (color) {
@@ -25,7 +29,9 @@ define(['stampit'],
                 id: ' [ parentObj ] ',
                 pos: [20, 20]
             }, function (conf) {
-                var rootElement = conf && conf.rootElement ? conf.rootElement : null;
+                //console.log('conf: ', conf);
+                //var rootElement = conf && conf.rootElement ? conf.rootElement : null;
+                var rootElement;
                 var privileged = 'privileged';
                 this.getP = function () { // privileged method
                     return privileged;
@@ -33,8 +39,9 @@ define(['stampit'],
                 this.getRootElement = function () {
                     return rootElement;
                 };
-                // setup element
-
+                this.setRootElement = function (el) {
+                    rootElement = el;
+                };
             }
         );
 
