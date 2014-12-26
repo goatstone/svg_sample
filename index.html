@@ -13,7 +13,7 @@
             top: 0;
             left: 0;
             opacity: 0;
-            transition: opacity 2s;
+            transition: opacity 1s;
         }
 
         svg.flame {
@@ -39,6 +39,52 @@
             border-radius: 15px;;
         }
 
+        svg.spinner {
+            top: 50%;
+            left: 50%;
+            width: 360px;
+            height: 300px;
+            margin-left: -125px;
+            margin-top: -130px;;
+            border-radius: 15px;;
+            opacity: 1.0;
+            font-family: sans-serif;
+            font-size: 35px;
+        }
+
+        svg.spinner text {
+            fill: red;
+            /*stroke: white*/
+        }
+
+        svg.spinner text tspan:nth-child(n+10) {
+            fill: blue;
+        }
+
+        svg.spinner text tspan:nth-child(1) {
+            fill: orange;
+            /*stroke: orange;*/
+            font-size: 30px;
+            animation: anim 4s ease alternate infinite;
+            -webkit-animation: anim 4s ease alternate infinite;
+            /*animation-name: anim;*/
+            /*animation-duration: 4s;*/
+        }
+
+        @-webkit-keyframes anim {
+            0% {
+                font-size: 30px;
+                fill: red;
+                /*transform: translate(1, 1);*/
+            }
+            100% {
+                font-size: 90px;
+                fill: orange;
+                /*stroke:orange;*/
+                /*transform: translate(100, 100);*/
+            }
+        }
+
         div.computer {
             position: absolute;
             top: 0;
@@ -47,6 +93,7 @@
             height: 100%;
             background-image: url('/resource/computer.svg');
             opacity: 0.0;
+            transition: opacity 3s;
         }
 
         menu {
@@ -91,6 +138,7 @@
         <li value="person">Person</li>
         <li value="clock">Clock</li>
         <li value="computer">Computer</li>
+        <li value="spinner">Spinner</li>
     </ul>
 </menu>
 <svg
