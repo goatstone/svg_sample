@@ -27,7 +27,7 @@ define(['stampit'],
             },
             {
                 id: ' [ parentObj ] ',
-                pos: [20, 20]
+                startPos: [20, 20]
             }, function (conf) {
                 //console.log('conf: ', conf);
                 //var rootElement = conf && conf.rootElement ? conf.rootElement : null;

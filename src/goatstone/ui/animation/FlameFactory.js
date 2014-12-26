@@ -1,18 +1,62 @@
 /*
  goatstone.ui.animation.FlameFactory
-
  */
 define(['stampit', 'Component', 'Snap'],
-
     function (stampit, Component, Snap) {
 
         var Flame = stampit({
+                renderPoints: function () {
+                    // clean up the old
+                    this.paper.removeClass('points');
+                    var g = this.paper.g().attr({class: 'points'});
+                    this.mainPath.forEach((function (e, i) {
+                        if (e[0].toLowerCase() === 'z')return;
+
+                        var x = (e[0] === 'm') ? e[1] : e[5];
+                        var y = (e[0] === 'm') ? e[2] : e[6];
+                        var c = this.paper.circle().attr({
+                            fill: 'blue',
+                            r: 15,
+                            cx: x,
+                            cy: y
+                        });
+                        var t = this.paper.text(x, y, ' ' + i).attr({stroke: 'red', fill: 'white'});
+
+                        var handle1;
+                        var handle2;
+                        if (e[0].toLowerCase() === 'c') { // display handles
+                            handle1 = this.paper.circle().attr({
+                                fill: 'white',
+                                r: 5,
+                                cx: e[1],
+                                cy: e[2]
+                            });
+                            var t1 = this.paper.text(e[1], e[2], '' + i);
+                            handle2 = this.paper.circle().attr({
+                                fill: 'black',
+                                r: 5,
+                                cx: e[3],
+                                cy: e[4]
+                            });
+                            var t2 = this.paper.text(e[3], e[4], ' ' + i);
+                            g.add(handle1, t1);
+                            g.add(handle2, t2);
+                        }
+
+                        g.add(c);
+                        g.add(t);
+                        g.transform('translate(' + this.position[0] + ' ,' + this.position[1] + ' )');
+
+                    }).bind(this));
+                },
                 render: function () {
                     this.flame.stop().animate(
                         {
                             fill: this.color,
-                            transform: 'r' + this.radiusTo + ' 150 250',
-                            opacity: this.opacity
+                            //transform: 's' + this.scale + 'r' + this.radiusTo + ' ' + this.pivot[0] + '  ' + this.pivot[1],
+                            transform: 'translate(' + this.position[0] + ',' + this.position[1] + ')',
+                            opacity: this.opacity,
+                            d: this.getPath()
                         },
                         this.speed,
                         this.update.bind(this)
@@ -23,34 +67,52 @@ define(['stampit', 'Component', 'Snap'],
                     var randNum = Math.max(0.3, Math.random());
                     this.opacity = randNum;
                     this.radiusTo = this.radiusTo > 10 ? 0 : 15;
-
+                    //this.scale = Math.max(0.2, Math.random() * 1.3);
+                    this.mainPath[5][1] = (Math.random() * 20 - 150);
+                    this.mainPath[3][5] = (Math.random() * 70 + 200);
+                    this.mainPath[1][5] = (Math.random() * 40 - 30 );
+                    this.position[0] = this.position[0] + Math.random() * 10 - 5;
+                    this.position[1] = this.position[1] + Math.random() * 10 - 5;
+                    //this.pivotX = this.pivot[0] + Math.floor( Math.random()*15 );
+                    //this.renderPoints();
                     this.render();
+                },
+                getPath: function () {
+                    return Snap.path.toRelative(this.mainPath);
                 }
             },
             {
                 id: '[ Flame ]',
-                pos: [20, 20],
+                position: [210, 100],
+                mainPath: [
+                    ['m', 0, 0],
+                    ['C', -190, 150, -40, 100, -30, 190],
+                    ['C', -20, 320, 130, 220, 130, 230],
+                    ['C', 315, 335, 425, 133, 230, 30],
+                    ['C', 235, 135, 325, 133, 130, 180],
+                    ['C', -135, 35, 125, 33, 0, 0],
+                    ['Z']
+                ],
+                pivot: [0, 0],
+                pivotX: 0,
                 radiusTo: 15,
                 color: 'blue',
                 color1: 'red',
                 color2: 'green',
                 speed: 5000,
-                opacity: 1.0
+                opacity: 0.2,
+                scale: 1
             },
             function (conf) {
                 this.id = conf && conf.id ? conf.id : this.id;
-                var paper = conf && conf.paper ? conf.paper : new Snap(400, 400);
-
-                this.flame = paper.path("m 150,70 c 36.47884,79.7699 -50.57747,123.60514 -13.12943,134.8303 19.07538,84.39882 41.57753,1.84615 50.17858,74.0624 12.64148,63.8947 94.36373,9.96107 119.44703,-10.58513 18.53945,-28.26025 28.00126,-32.57984 29.10384,-63.39877 0.24262,-56.0894 -110.88613,-99.26346 -62.51384,-174.84841 -75.61557,20.11538 39.19727,206.11519 -23.14052,204.83226 -133.31155,-3.2487 11.53813,-170.3054 -99.94566,-164.89265 z")
+                this.paper = conf && conf.paper ? conf.paper : new Snap(400, 400);
+                this.flame = this.paper.path(this.getPath())
                     .attr({
                         fill: "red",
-                        stroke: "#bada55",
-                        strokeWidth: '0'
+                        transform: 'translate(' + this.position[0] + ',' + this.position[1] + ')'
                     });
                 this.render();
                 this.setRootElement(this.flame);
-                //this.hide();
-
             });
 
         var FlameFactory = stampit().compose(Component, Flame);

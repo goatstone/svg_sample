@@ -2,8 +2,8 @@
  goatstone.svg_sample.Controller
 
  * */
-
 define(['FlameFactory', 'Snap'],
+
     function (FlameFactory, Snap) {
 
         function Controller() {
@@ -15,7 +15,7 @@ define(['FlameFactory', 'Snap'],
                     id: 'bigFlame',
                     color: 'gray',
                     color1: 'orange',
-                    color2: 'blue',
+                    color2: 'yellow',
                     speed: 700
                 }, // state
                 {paper: paper} //  arg to Flame
@@ -23,28 +23,27 @@ define(['FlameFactory', 'Snap'],
 
             FlameFactory.create(
                 {
-                    id: 'redFlame',
+                    id: 'blueFlame',
                     color: 'gray',
-                    color1: 'red',
-                    color2: 'green',
-                    speed: 4000
+                    color1: 'blue',
+                    color2: 'yellow',
+                    speed: 500,
+                    position:[300,120]
                 }, // state
                 {paper: paper} //  arg to Flame
             );
-
             FlameFactory.create(
                 {
-                    id: 'violetFlame',
-                    color: 'blue',
-                    color1: 'violet',
-                    color2: 'red',
-                    speed: 2000
+                    id: 'wideFlame',
+                    color: 'gray',
+                    color1: 'red',
+                    color2: 'orange',
+                    speed: 1500,
+                    position:[100,80]
                 }, // state
                 {paper: paper} //  arg to Flame
             );
-
         }
 
         return Controller;
-
     });
