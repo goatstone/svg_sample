@@ -8,6 +8,10 @@
             background-color: #000;
         }
 
+        svg {
+            opacity: 0;
+        }
+
         svg.flame {
             position: absolute;
             top: 0;
@@ -22,8 +26,22 @@
         svg.person {
             position: absolute;
             top: 0;
-            left: 0 transition : opacity 2 s;
+            left: 0;
+            transition: opacity 2s;
             opacity: 0.0;
+        }
+
+        svg.clock {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 260px;
+            height: 200px;
+            margin-left: -125px;
+            margin-top: -130px;;
+            transition: opacity 2s;
+            background-color: darkred;
+            border-radius: 15px;;
         }
 
         menu {
@@ -66,6 +84,7 @@
     <ul>
         <li value="flame">Flame</li>
         <li value="person">Person</li>
+        <li value="clock">Clock</li>
     </ul>
 </menu>
 

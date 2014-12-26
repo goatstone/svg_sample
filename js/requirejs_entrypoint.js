@@ -13,6 +13,7 @@ require([], function () {
             Controller: 'goatstone/svg_sample/Controller',
             FlameFactory: 'goatstone/ui/animation/FlameFactory',
             PersonFactory: 'goatstone/ui/animation/PersonFactory',
+            Clock: 'goatstone/ui/animation/Clock',
             Component: 'goatstone/ui/Component'
         }
     });
