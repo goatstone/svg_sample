@@ -63,9 +63,11 @@ define(['FlameFactory', 'Snap', 'PersonFactory', 'Clock'],
             });
             menu.addEventListener('click', function (e) {
                 var selectedValue = e.target.attributes[0].value;
-                document.querySelector('svg.person').style.opacity = 0.0;
                 document.querySelector('svg.flame').style.opacity = 0.0;
                 document.querySelector('svg.clock').style.opacity = 0.0;
+                document.querySelector('svg.person').style.opacity = 0.0;
+
+                document.querySelector('div.computer').style.opacity = 0.0;
                 if (selectedValue === 'flame') {
                     document.querySelector('svg.flame').style.opacity = 1.0;
                 }
@@ -74,6 +76,9 @@ define(['FlameFactory', 'Snap', 'PersonFactory', 'Clock'],
                 }
                 else if (selectedValue === 'clock') {
                     document.querySelector('svg.clock').style.opacity = 1.0;
+                }
+                else if (selectedValue === 'computer') {
+                    document.querySelector('div.computer').style.opacity = 1.0;
                 }
                 menuTag.style.opacity = 0;
             });
