@@ -32,7 +32,7 @@ define(['Flame', 'Snap', 'PubSub', 'PersonFactory', 'Clock', 'SpinnerFactory', '
 
             personPaper = SnapPaper.create({}, {snapPaperElementName: 'svg.person'});
             PersonFactory.create({}, {paper: personPaper.snapPaper});
-            personPaper.show();
+            //personPaper.show();
 
             flamePaper = SnapPaper.create();
             flames.push(
@@ -47,16 +47,35 @@ define(['Flame', 'Snap', 'PubSub', 'PersonFactory', 'Clock', 'SpinnerFactory', '
                     {paper: flamePaper.snapPaper} //  arg to Flame
                 )
             );
+            flames.push(
+                Flame.create(
+                    {
+                        id: 'bigFlame',
+                        color: 'gray',
+                        color1: 'blue',
+                        color2: 'yellow',
+                        speed: 200
+                    }, //  state
+                    {paper: flamePaper.snapPaper} //  arg to Flame
+                )
+            );
             flamePaper.show();
 
             mainMenu.getRootElement().addEventListener('click', function (e) {
                     var selectedValue = e.target.attributes[0].value;
                     // TODO publish selected Value, remove if/else
                     // PubSub.publish(''show" ,'   selectedValue);  selectedValue) = 'flame'
+                    flamePaper.hide();
+                    personPaper.hide();
                     clockPaper.hide();
+                    spinnerPaper.hide();
+                    Snap('div.computer').attr({opacity: 0.0});
+
                     if (selectedValue === 'flame') {
+                        flamePaper.show();
                     }
                     else if (selectedValue === 'person') {
+                        personPaper.show();
                     }
                     else if (selectedValue === 'clock') {
                         clockPaper.show();
