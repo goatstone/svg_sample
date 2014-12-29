@@ -13,7 +13,7 @@ require([], function () {
 
             Controller: 'goatstone/svg_sample/Controller',
             Component: 'goatstone/ui/Component',
-
+            SnapPaper: 'goatstone/ui/svg/SnapPaper',
             Flame: 'goatstone/ui/animation/Flame',
             PersonFactory: 'goatstone/ui/animation/PersonFactory',
             SpinnerFactory: 'goatstone/ui/animation/SpinnerFactory',

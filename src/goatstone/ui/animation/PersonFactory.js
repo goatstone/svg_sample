@@ -24,16 +24,9 @@ define(['stampit', 'Component', 'Snap'],
                 radiusTo:0
             },
             function (conf) {
-                this.id = conf && conf.id ? conf.id : this.id;
-                this.paper = conf && conf.paper ? conf.paper : new Snap(400, 400);
-                //console.log('Person', conf);
+                this.paper = conf && conf.paper ? conf.paper : null;// does not get conf.paper
                 this.element = this.paper.select('g path:nth-child(3)' );
-                //    .attr({  Snap.select('.person g path:nth-child(3)'
-                //        fill: "red",
-                //        transform: 'translate(' + this.position[0] + ',' + this.position[1] + ')'
-                //    });
                 this.render();
-                //this.setRootElement(this.flame);
             });
 
         var PersonFactory = stampit().compose(Component, Person);

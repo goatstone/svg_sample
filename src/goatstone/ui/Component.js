@@ -11,13 +11,20 @@ define(['stampit', 'PubSub'],
                     return 'sub';
                 },
                 pub: function (topic, callback) {
-                    console.log('C : pub') ;
                     var token = PubSub.publish(topic, callback);
                     return 'pub';
                 },
                 show: function (b) {
+//                    console.log('Component 1::::::: ',this);
+//                    console.log('Component 2: ', this.getRootElement() );
+
+//                    var svg_item = Snap(300, 300);
+////                    svg_item.root.node.id = "main_svg";
+//                    svg_item.root.node.style.pointerEvents = "none";
+
                     this.getRootElement().style.visibility = 'visible';
                     this.getRootElement().style.display = 'block';
+                    this.getRootElement().style.opacity = 1.0;
                 },
                 hide: function () {
                     this.getRootElement().style.visibility = 'hidden';
