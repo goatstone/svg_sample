@@ -1,14 +1,18 @@
 /*
  goatstone.ui.Component
  */
-define(['stampit'],
-    function (stampit) {
+define(['stampit', 'PubSub'],
+    function (stampit, PubSub) {
 
         var Component = stampit({
-                sub: function (a) {
+                sub: function (topic, message) {
+                    console.log('C : Sub');
+                    PubSub.subscribe(topic, message);
                     return 'sub';
                 },
-                pub: function (a) {
+                pub: function (topic, callback) {
+                    console.log('C : pub') ;
+                    var token = PubSub.publish(topic, callback);
                     return 'pub';
                 },
                 show: function (b) {
@@ -19,12 +23,12 @@ define(['stampit'],
                     this.getRootElement().style.visibility = 'hidden';
                     this.getRootElement().style.display = 'none';
                 },
-                toggle:function(){
-                 if(this.getRootElement().style.display === 'none'){
-                     this.show();
-                 }else{
-                     this.hide();
-                 }
+                toggle: function () {
+                    if (this.getRootElement().style.display === 'none') {
+                        this.show();
+                    } else {
+                        this.hide();
+                    }
                 }
             },
             {

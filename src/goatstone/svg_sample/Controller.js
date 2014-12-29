@@ -2,12 +2,19 @@
  goatstone.svg_sample.Controller
 
  * */
-define(['Flame', 'Snap', 'PersonFactory', 'Clock', 'SpinnerFactory', 'Menu'],
-    function (Flame, Snap, PersonFactory, Clock, SpinnerFactory, Menu) {
+define(['Flame', 'Snap', 'PubSub', 'PersonFactory', 'Clock', 'SpinnerFactory', 'Menu'],
+    function (Flame, Snap, PubSub, PersonFactory, Clock, SpinnerFactory, Menu) {
 
         function Controller() {
+
             var buttonOpenMenu = document.querySelector('button.open-menu');
+
             var mainMenu = Menu.create({}, {rootElement: document.querySelector('menu')});
+            mainMenu.sub('menu', function (arg, data) {
+                if (data === 'toggle') {
+                    mainMenu.toggle();
+                }
+            });
             mainMenu.show();
 
             var spinnerPaper = new Snap(300, 300);
@@ -18,7 +25,8 @@ define(['Flame', 'Snap', 'PersonFactory', 'Clock', 'SpinnerFactory', 'Menu'],
             PersonFactory.create({}, personPaper);
             var flames = [];
             var flamePaper = new Snap(400, 400).addClass('flame');
-            flames.push(Flame.create(
+            flames.push(
+                Flame.create(
                     {
                         id: 'bigFlame',
                         color: 'gray',
@@ -42,11 +50,12 @@ define(['Flame', 'Snap', 'PersonFactory', 'Clock', 'SpinnerFactory', 'Menu'],
             );
 
             buttonOpenMenu.addEventListener('click', function () {
-                mainMenu.toggle();
+                PubSub.publish('menu', 'toggle');
             });
 
             mainMenu.getRootElement().addEventListener('click', function (e) {
                     var selectedValue = e.target.attributes[0].value;
+                    // PubSub.publish(selectedValue);
                     flamePaper.attr({opacity: 0.0});
                     clockPaper.attr({opacity: 0.0});
                     personPaper.attr({opacity: 0.0});
