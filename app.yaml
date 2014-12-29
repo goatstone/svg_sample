@@ -24,8 +24,6 @@ handlers:
   static_files: login.html
   upload: login.html
 
-#- url: /templates
-#  script: _go_app
 - url: /node_modules
   static_dir: node_modules
   mime_type: application/javascript
@@ -33,5 +31,3 @@ handlers:
 - url: /.*
   static_files:  index.html
   upload:  index.html
-#  login: required
-#  secure: always
