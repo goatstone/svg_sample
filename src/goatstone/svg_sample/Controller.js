@@ -2,12 +2,11 @@
  goatstone.svg_sample.Controller
 
  * */
-define(['FlameFactory', 'Snap', 'PersonFactory', 'Clock', 'SpinnerFactory'],
+define(['Flame', 'Snap', 'PersonFactory', 'Clock', 'SpinnerFactory'],
 
-    function (FlameFactory, Snap, PersonFactory, Clock, SpinnerFactory) {
+    function (Flame, Snap, PersonFactory, Clock, SpinnerFactory) {
 
         function Controller() {
-            var paper = new Snap(400, 400).addClass('flame');
             var buttonOpenMenu = document.querySelector('button.open-menu');
             var menuTag = document.querySelector('menu');
             var menu = document.querySelector('menu ul');
@@ -16,7 +15,9 @@ define(['FlameFactory', 'Snap', 'PersonFactory', 'Clock', 'SpinnerFactory'],
 
             Clock.create({}, {paper: new Snap(300, 300)});
             PersonFactory.create({}, new Snap('svg.person'));
-            FlameFactory.create(
+
+            var flamePaper = new Snap(400, 400).addClass('flame');
+            Flame.create(
                 {
                     id: 'bigFlame',
                     color: 'gray',
@@ -24,9 +25,9 @@ define(['FlameFactory', 'Snap', 'PersonFactory', 'Clock', 'SpinnerFactory'],
                     color2: 'yellow',
                     speed: 700
                 }, // state
-                {paper: paper} //  arg to Flame
+                {paper: flamePaper} //  arg to Flame
             );
-            FlameFactory.create(
+            Flame.create(
                 {
                     id: 'blueFlame',
                     color: 'gray',
@@ -34,10 +35,10 @@ define(['FlameFactory', 'Snap', 'PersonFactory', 'Clock', 'SpinnerFactory'],
                     color2: 'yellow',
                     speed: 500,
                     position: [300, 120]
-                }, // state
-                {paper: paper} //  arg to Flame
+                }, 
+                {paper: flamePaper} 
             );
-            FlameFactory.create(
+            Flame.create(
                 {
                     id: 'wideFlame',
                     color: 'gray',
@@ -45,8 +46,8 @@ define(['FlameFactory', 'Snap', 'PersonFactory', 'Clock', 'SpinnerFactory'],
                     color2: 'orange',
                     speed: 1500,
                     position: [100, 80]
-                }, // state
-                {paper: paper} //  arg to Flame
+                }, 
+                {paper: flamePaper} 
             );
 
             buttonOpenMenu.addEventListener('click', function () {

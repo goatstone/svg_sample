@@ -6,7 +6,10 @@ define(['stampit'],
 
         var Component = stampit({
                 sub: function (a) {
-                    return 'sub...';
+                    return 'sub';
+                },
+                pub: function  (a) {
+                    return 'pub'
                 },
                 show: function (b) {
                     this.getRootElement().style.opacity = 1;
@@ -14,28 +17,18 @@ define(['stampit'],
                 },
                 hide: function () {
                     console.log('hide');
-                    //this.getRootElement().style.opacity = 0.0;
                     this.getRootElement()
                         .attr({
                             display:'none'
                         });
                     return 'hide';
-                },
-                setBG: function (color) {
-                    this.getRootElement().style.backgroundColor = color;
                 }
             },
             {
-                id: ' [ parentObj ] ',
-                startPos: [20, 20]
-            }, function (conf) {
-                //console.log('conf: ', conf);
-                //var rootElement = conf && conf.rootElement ? conf.rootElement : null;
-                var rootElement;
-                var privileged = 'privileged';
-                this.getP = function () { // privileged method
-                    return privileged;
-                };
+                id: ' [ Component ] '
+            }, function (){
+                // root Snap elemnt
+                var rootElement;                
                 this.getRootElement = function () {
                     return rootElement;
                 };

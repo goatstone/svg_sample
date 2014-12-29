@@ -10,7 +10,7 @@ require([], function () {
             stampit: "/node_modules/stampit/dist/stampit",
             Snap: '/node_modules/snapsvg/dist/snap.svg',
             Controller: 'goatstone/svg_sample/Controller',
-            FlameFactory: 'goatstone/ui/animation/FlameFactory',
+            Flame: 'goatstone/ui/animation/Flame',
             PersonFactory: 'goatstone/ui/animation/PersonFactory',
             SpinnerFactory: 'goatstone/ui/animation/SpinnerFactory',
             Clock: 'goatstone/ui/animation/Clock',
