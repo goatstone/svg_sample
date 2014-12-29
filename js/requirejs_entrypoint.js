@@ -9,12 +9,15 @@ require([], function () {
         paths: {
             stampit: "/node_modules/stampit/dist/stampit",
             Snap: '/node_modules/snapsvg/dist/snap.svg',
+
             Controller: 'goatstone/svg_sample/Controller',
+            Component: 'goatstone/ui/Component',
+
             Flame: 'goatstone/ui/animation/Flame',
             PersonFactory: 'goatstone/ui/animation/PersonFactory',
             SpinnerFactory: 'goatstone/ui/animation/SpinnerFactory',
             Clock: 'goatstone/ui/animation/Clock',
-            Component: 'goatstone/ui/Component'
+            Menu: 'goatstone/svg_sample/ui/Menu'
         }
     });
 

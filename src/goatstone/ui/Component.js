@@ -8,27 +8,30 @@ define(['stampit'],
                 sub: function (a) {
                     return 'sub';
                 },
-                pub: function  (a) {
-                    return 'pub'
+                pub: function (a) {
+                    return 'pub';
                 },
                 show: function (b) {
-                    this.getRootElement().style.opacity = 1;
-                    return this.id;
+                    this.getRootElement().style.visibility = 'visible';
+                    this.getRootElement().style.display = 'block';
                 },
                 hide: function () {
-                    console.log('hide');
-                    this.getRootElement()
-                        .attr({
-                            display:'none'
-                        });
-                    return 'hide';
+                    this.getRootElement().style.visibility = 'hidden';
+                    this.getRootElement().style.display = 'none';
+                },
+                toggle:function(){
+                 if(this.getRootElement().style.display === 'none'){
+                     this.show();
+                 }else{
+                     this.hide();
+                 }
                 }
             },
             {
                 id: ' [ Component ] '
-            }, function (){
+            }, function () {
                 // root Snap elemnt
-                var rootElement;                
+                var rootElement;
                 this.getRootElement = function () {
                     return rootElement;
                 };

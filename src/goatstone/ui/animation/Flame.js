@@ -28,8 +28,16 @@ define(['stampit', 'Component', 'Snap'],
                     this.position[0] = this.position[0] + Math.random() * 10 - 5;
                     this.position[1] = this.position[1] + Math.random() * 10 - 5;
                 },
-                engine: function(){
-                    this.update();                    
+                stop: function () {
+                    this.isRunning = false;
+                },
+                start: function () {
+                    this.isRunning = true;
+                    this.draw();
+                },
+                engine: function () {
+                    if (!this.isRunning)return;
+                    this.update();
                     this.draw();
                 },
                 getPath: function () {
@@ -48,6 +56,7 @@ define(['stampit', 'Component', 'Snap'],
                     ['C', -135, 35, 125, 33, 0, 0],
                     ['Z']
                 ],
+                isRunning: true,
                 pivot: [0, 0],
                 color: 'blue',
                 color1: 'red',
@@ -58,13 +67,13 @@ define(['stampit', 'Component', 'Snap'],
             },
             function (conf) {
                 var paper = conf && conf.paper ? conf.paper : new Snap(400, 400);
-                if(conf && conf.paper){
+                if (conf && conf.paper) {
                     paper = conf.paper;
                 }
-                else{
+                else {
                     throw 'Instance of Snap element required.';
                 }
-                this.setRootElement( paper.path(this.getPath()) );
+                this.setRootElement(paper.path(this.getPath()));
                 this.draw();
             });
 
