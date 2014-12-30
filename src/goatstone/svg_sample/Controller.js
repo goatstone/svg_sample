@@ -25,16 +25,28 @@ define(['Flame', 'Snap', 'PubSub', 'PersonFactory', 'Clock', 'SpinnerFactory', '
             mainMenu.show();
 
             spinnerPaper = SnapPaper.create();
+            spinnerPaper.sub('spinner', function (arg, data) {
+                spinnerPaper.show();
+            });
             spinner = SpinnerFactory.create({}, {paper: spinnerPaper.snapPaper});
 
             clockPaper = SnapPaper.create();
+            clockPaper.sub('clock', function () {
+                clockPaper.show();
+            });
             Clock.create({}, {paper: clockPaper.snapPaper});
 
             personPaper = SnapPaper.create({}, {snapPaperElementName: 'svg.person'});
+            personPaper.sub('person', function () {
+                personPaper.show();
+            });
             PersonFactory.create({}, {paper: personPaper.snapPaper});
-            //personPaper.show();
 
             flamePaper = SnapPaper.create();
+            flamePaper.show();
+            flamePaper.sub('flame', function () {
+                flamePaper.show();
+            });
             flames.push(
                 Flame.create(
                     {
@@ -59,36 +71,20 @@ define(['Flame', 'Snap', 'PubSub', 'PersonFactory', 'Clock', 'SpinnerFactory', '
                     {paper: flamePaper.snapPaper} //  arg to Flame
                 )
             );
-            flamePaper.show();
 
             mainMenu.getRootElement().addEventListener('click', function (e) {
                     var selectedValue = e.target.attributes[0].value;
-                    // TODO publish selected Value, remove if/else
-                    // PubSub.publish(''show" ,'   selectedValue);  selectedValue) = 'flame'
                     flamePaper.hide();
                     personPaper.hide();
                     clockPaper.hide();
                     spinnerPaper.hide();
+                    PubSub.publish(selectedValue);
                     Snap('div.computer').attr({opacity: 0.0});
-
-                    if (selectedValue === 'flame') {
-                        flamePaper.show();
-                    }
-                    else if (selectedValue === 'person') {
-                        personPaper.show();
-                    }
-                    else if (selectedValue === 'clock') {
-                        clockPaper.show();
-                    }
-                    else if (selectedValue === 'computer') {
+                    if (selectedValue === 'computer') {
                         Snap('div.computer').attr({opacity: 1.0});
-                    }
-                    else if (selectedValue === 'spinner') {
-                        spinnerPaper.show();
                     }
                 }
             );
-
         }
 
         return Controller;
