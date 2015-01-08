@@ -5,19 +5,16 @@ api_version: go1
 
 handlers:
 
-- url: /resource
-  static_dir: resource
-
 - url: /css
-  static_dir: css
+  static_dir: src/css
   mime_type: text/css
 
 - url: /js
   static_dir: js
   mime_type: application/javascript
 
-- url: /src
-  static_dir: src
+- url: /src/goatstone
+  static_dir: src/goatstone
   mime_type: application/javascript
 
 - url: /login
