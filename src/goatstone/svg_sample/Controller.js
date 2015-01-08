@@ -72,19 +72,23 @@ define(['Flame', 'Snap', 'PubSub', 'PersonFactory', 'Clock', 'SpinnerFactory', '
                 )
             );
 
-            mainMenu.getRootElement().addEventListener('click', function (e) {
-                    var selectedValue = e.target.attributes[0].value;
+            Array.prototype.forEach.call(
+                mainMenu.getRootElement().getElementsByTagName('button'),
+                eachButton
+            );
+            function eachButton(el) {
+                el.addEventListener('click', function (e) {
                     flamePaper.hide();
                     personPaper.hide();
                     clockPaper.hide();
                     spinnerPaper.hide();
-                    PubSub.publish(selectedValue);
+                    PubSub.publish(this.value);
                     Snap('div.computer').attr({opacity: 0.0});
-                    if (selectedValue === 'computer') {
+                    if (this.value === 'computer') {
                         Snap('div.computer').attr({opacity: 1.0});
                     }
-                }
-            );
+                })
+            }
         }
 
         return Controller;

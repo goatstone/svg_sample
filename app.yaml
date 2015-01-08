@@ -5,6 +5,9 @@ api_version: go1
 
 handlers:
 
+- url: /resource
+  static_dir: resource
+
 - url: /css
   static_dir: src/css
   mime_type: text/css

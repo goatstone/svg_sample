@@ -1,6 +1,6 @@
 body {
-    background-color: #000;
-
+    background-color: #ccc;
+    font-family : sans-serif, Helvetica, Verdana;
 }
 
 svg {
@@ -46,12 +46,11 @@ svg.spinner {
     /*opacity: 1.0;*/
     font-family: sans-serif;
     font-size: 35px;
-    fill:red;
+    fill: red;
 }
 
 svg.spinner text {
     fill: red;
-    /*stroke: white*/
 }
 
 svg.spinner text tspan:nth-child(n+10) {
@@ -72,13 +71,10 @@ svg.spinner text tspan:nth-child(1) {
     0% {
         font-size: 30px;
         fill: red;
-        /*transform: translate(1, 1);*/
     }
     100% {
         font-size: 90px;
         fill: orange;
-        /*stroke:orange;*/
-        /*transform: translate(100, 100);*/
     }
 }
 
@@ -94,14 +90,40 @@ div.computer {
 }
 
 menu {
-    position: absolute;
-    top: 40px;
-    right: 10px;
+    position: fixed;
+    top: 16px;
+    right: 56px;
     z-index: 200;
-    background-color: gray;
-    border-radius: 5px;
     transition: opacity 1s;
     display: none;
+}
+
+menu button {
+    font: 1.2em/1.4em  bold ;
+    font-family : sans-serif, Helvetica, Verdana;
+
+    color: darkblue;
+    background-color: gold;
+    float: right;
+    clear: right;
+    border: 5px;
+    border-radius: 5px;
+    margin: 3px;
+    transition:background-color 1s;
+    box-shadow: 8px 8px 12px #0af;
+
+}
+menu button:hover {
+    background-color: skyblue;
+    cursor: pointer;
+}
+menu button:active{
+    transition:background-color 0.3s;
+    background-color: greenyellow;
+}
+menu button:focus{
+    box-shadow: 8px 8px 12px cyan;
+    background-color: greenyellow;
 }
 
 menu ul li {
@@ -111,16 +133,30 @@ menu ul li {
     cursor: pointer;
 }
 
+menu ul li:hover {
+    background-color: red;
+}
+
 button.open-menu {
-    position: absolute;
+    position: fixed;
     top: 10px;
     right: 10px;
-    z-index: 150;
-    border-radius: 5px;
-    font-size: 1.3em;
+    height: 36px;
+    width: 36px;
     cursor: pointer;
+    border: 5px;
+    border-radius: 5px;
+    z-index: 150;
+    box-shadow: 4px 4px 6px #0af;
+    background: linear-gradient(to bottom, gold 0%, gold 20%, transparent 20%, transparent 40%, gold 40%, gold 60%, transparent 60%, transparent 80%, gold 80%, gold 100%);
+    transition:background-color 1s;
 }
 
 button.open-menu:hover {
-    background-color: green;
+    background: linear-gradient(to bottom, #888 0%, #888 20%, transparent 20%, transparent 40%, #888 40%, #888 60%, transparent 60%, transparent 80%, #888 80%, #888 100%);
+    background-color: deepskyblue;
+}
+
+button.open-menu:active {
+    background: linear-gradient(to bottom, #090 0%, #090 20%, transparent 20%, transparent 40%, #090 40%, #090 60%, transparent 60%, transparent 80%, #090 80%, #090 100%);
 }
