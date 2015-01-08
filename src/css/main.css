@@ -1,8 +1,11 @@
 body {
     background-color: #ccc;
     font-family : sans-serif, Helvetica, Verdana;
+    margin: 0;
 }
-
+html{
+    overflow-y: scroll;
+}
 svg {
     position: absolute;
     top: 0;
@@ -59,12 +62,9 @@ svg.spinner text tspan:nth-child(n+10) {
 
 svg.spinner text tspan:nth-child(1) {
     fill: orange;
-    /*stroke: orange;*/
     font-size: 30px;
     animation: anim 4s ease alternate infinite;
     -webkit-animation: anim 4s ease alternate infinite;
-    /*animation-name: anim;*/
-    /*animation-duration: 4s;*/
 }
 
 @-webkit-keyframes anim {
@@ -91,8 +91,8 @@ div.computer {
 
 menu {
     position: fixed;
-    top: 16px;
-    right: 56px;
+    top: 43px;
+    right: 15px;
     z-index: 200;
     transition: opacity 1s;
     display: none;
@@ -101,7 +101,6 @@ menu {
 menu button {
     font: 1.2em/1.4em  bold ;
     font-family : sans-serif, Helvetica, Verdana;
-
     color: darkblue;
     background-color: gold;
     float: right;
@@ -126,21 +125,11 @@ menu button:focus{
     background-color: greenyellow;
 }
 
-menu ul li {
-    list-style: none;
-    margin-left: -60px;
-    margin-right: 20px;
-    cursor: pointer;
-}
-
-menu ul li:hover {
-    background-color: red;
-}
-
 button.open-menu {
     position: fixed;
-    top: 10px;
-    right: 10px;
+    top: 0px;
+    right: 5px;
+    margin: 12px;
     height: 36px;
     width: 36px;
     cursor: pointer;
@@ -159,4 +148,15 @@ button.open-menu:hover {
 
 button.open-menu:active {
     background: linear-gradient(to bottom, #090 0%, #090 20%, transparent 20%, transparent 40%, #090 40%, #090 60%, transparent 60%, transparent 80%, #090 80%, #090 100%);
+}
+
+div.message{
+    position: fixed;
+    background-color: lightyellow;
+    bottom:6px;
+    right:5px;
+    border-radius: 5px;
+    min-height: 20px;
+    text-align: right;
+    padding: 12px 22px;
 }

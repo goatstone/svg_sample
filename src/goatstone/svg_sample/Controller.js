@@ -12,9 +12,14 @@ define(['Flame', 'Snap', 'PubSub', 'PersonFactory', 'Clock', 'SpinnerFactory', '
             var spinnerPaper, spinner, clockPaper, personPaper, flamePaper;
 
             buttonOpenMenu = document.querySelector('button.open-menu');
-            buttonOpenMenu.addEventListener('click', function () {
+            buttonOpenMenu.addEventListener('click', function (e) {
+                e.stopPropagation();
                 PubSub.publish('menu', 'toggle');
             });
+
+            document.body.addEventListener('click', function (e) {
+                mainMenu.hide();
+            })
 
             mainMenu = Menu.create({}, {rootElement: document.querySelector('menu')});
             mainMenu.sub('menu', function (arg, data) {
