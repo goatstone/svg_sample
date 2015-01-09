@@ -24,6 +24,9 @@ svg.flame {
 
 svg.person {
     opacity: 0.0;
+    transform: scale(0.5, 0.5);
+    top: -210px;
+    left: -100px;
 }
 
 svg.clock {
