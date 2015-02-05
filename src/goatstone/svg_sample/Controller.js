@@ -84,6 +84,7 @@ define(['Flame', 'Snap', 'PubSub', 'PersonFactory', 'Clock', 'SpinnerFactory', '
             );
             function eachButton(el) {
                 el.addEventListener('click', function (e) {
+                    e.stopPropagation();
                     flamePaper.hide();
                     personPaper.hide();
                     clockPaper.hide();
