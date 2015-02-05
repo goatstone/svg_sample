@@ -42,13 +42,14 @@ define(['Flame', 'Snap', 'PubSub', 'PersonFactory', 'Clock', 'SpinnerFactory', '
             Clock.create({}, {paper: clockPaper.snapPaper});
 
             personPaper = SnapPaper.create({}, {snapPaperElementName: 'svg.person'});
+            personPaper.show();
             personPaper.sub('person', function () {
                 personPaper.show();
             });
             PersonFactory.create({}, {paper: personPaper.snapPaper});
 
             flamePaper = SnapPaper.create();
-            flamePaper.show();
+            //flamePaper.show();
             flamePaper.sub('flame', function () {
                 flamePaper.show();
             });
